@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "lint": "eslint . --ext js,ts,tsx --fix"
+    "lint": "eslint . --ext js,ts,tsx --fix",
+    "lv":"lerna version --no-private",
+    "lp":"lerna publish from-package"
   },
   "workspaces": [
     "packages/*",
@@ -22,12 +24,13 @@
     }
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^8.3.4",
     "@efox/eslint-config-react-prittier-ts": "^1.0.19",
-    "commitlint": "^8.3.5",
     "cross-env": "^7.0.2",
     "husky": "^4.2.5",
     "lerna": "^3.22.0",
+    "lerna-changelog": "^1.0.1",
     "lint-staged": "^10.2.7",
     "typescript": "^3.9.3"
   },
