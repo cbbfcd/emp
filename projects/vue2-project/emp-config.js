@@ -14,6 +14,7 @@ module.exports = withVue2(({config}) => {
         shared: ['vue/dist/vue.esm.js'],
         remotes: {
           '@v2b': 'vue2Base',
+          '@v3b': 'vue3Base',
         },
       },
     }
@@ -26,7 +27,7 @@ module.exports = withVue2(({config}) => {
       ...{
         title: 'EMP Vue2 Project',
         files: {
-          js: ['http://localhost:8009/emp.js'],
+          js: ['http://localhost:8009/emp.js', 'http://localhost:8005/emp.js'],
         },
       },
     }
