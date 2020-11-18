@@ -20,8 +20,11 @@ export default {
   methods: {
     add() {
       // Vue2 使用 Vue3 传过来的自定义事件需要把函数名 kebab-case 改为 camelCase 再加前缀 on
-      // 例如：调用 @my-event 需要写成 onMyEvent
+      // 例如：调用 @myEvent 需要写成 onMyEvent
+      // 被 Vue3 调用
       this.$emit("onMyEvent");
+      // 被 Vue2 调用
+      this.$emit("myEvent");
     },
   },
   mounted: function () {

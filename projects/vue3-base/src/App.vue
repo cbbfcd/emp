@@ -5,7 +5,7 @@
     <li>
       <Content />
     </li>
-    <li><Button /></li>
+    <li><Button title="Button INC"/></li>
   </ul>
 </div>
 </template>
