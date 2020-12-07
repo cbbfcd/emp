@@ -14,6 +14,9 @@ module.exports = withVue3(({config}) => {
         /* shared: {
           vue: {eager: true, singleton: true, requiredVersion: '^3.0.2'},
         }, */
+        exposes: {
+          './Content': './src/components/HelloWorld',
+        },
       },
     }
     return args

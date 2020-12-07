@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+        <el-button type="primary" @click="startHacking">
+      Get Started
+    </el-button>
   </div>
 </template>
 
