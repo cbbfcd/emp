@@ -7,13 +7,6 @@ const app = new App({
   },
 })
 
-export const loadApp = id => {
-  return new App({
-    target: document.querySelector('#emp-root'),
-    props: {name: 'world'},
-  })
-}
-
 window.app = app
 
 export default app

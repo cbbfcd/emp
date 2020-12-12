@@ -23,8 +23,8 @@ module.exports = withSvetle(({config, env, empEnv}) => {
           svetleComponents: 'svetleComponents',
         },
         exposes: {
-          './App': './src/main.js',
-          './loadApp': './src/loadApp.js',
+          './App': './src/App.svelte',
+          // './loadApp': './src/loadApp.js',
         },
         shared: [],
         // shared: {
