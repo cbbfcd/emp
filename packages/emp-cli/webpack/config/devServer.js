@@ -1,5 +1,6 @@
 const {getPaths} = require('../../helpers/paths')
-const {public} = getPaths()
+const {public, appSrc, empjson} = getPaths()
+
 module.exports = (env, {hot, open, progress}) => {
   return {
     devServer: {
@@ -12,7 +13,6 @@ module.exports = (env, {hot, open, progress}) => {
       // contentBasePublicPath :'/',//定义静态路径的别名
       // disableHostCheck: true,
       firewall: false,
-      historyApiFallback: true,
       // open: open === true,
       hot: hot === true,
       // useLocalIp: true,
@@ -35,6 +35,14 @@ module.exports = (env, {hot, open, progress}) => {
           // Can be:
           // watch: {} (options for the `watch` option you can find https://github.com/paulmillr/chokidar)
           // watch: true,
+        },
+        {
+          directory: appSrc,
+          publicPath: '/docs',
+        },
+        {
+          directory: empjson,
+          publicPath: '/emp.json',
         },
       ],
       overlay: !hot,
