@@ -1,0 +1,1 @@
+# Vue v2 Typescript 装饰器  Support
