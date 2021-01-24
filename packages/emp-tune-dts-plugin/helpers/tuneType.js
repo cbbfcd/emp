@@ -1,6 +1,19 @@
 const path = require('path')
 const fs = require('fs-extra')
 
+// let mfProjectName = ''
+// try {
+//   const {getProjectConfig} = require('@efox/emp-cli/helpers/project')
+//   getProjectConfig('production').then(config => {
+//     let plugins = config.plugins
+//     plugins.forEach(plugin => {
+//       if (JSON.stringify(plugin._options)) {
+//         mfProjectName = plugin._options.name
+//       }
+//     })
+//   })
+// } catch (ex) {}
+
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
@@ -22,6 +35,13 @@ function defaultRepalce(fileData) {
   const projectName = package.name
   newFileData = newFileData.replace(/'.*src?/g, `'${projectName}`)
   newFileData = newFileData.replace(/".*src?/g, `"${projectName}`)
+
+  // TODO: replace package.name to emp-config name
+  // if (!!mfProjectName) {
+  //   newFileData = newFileData.replace(/'.*src?/g, `'${mfProjectName}`)
+  //   newFileData = newFileData.replace(/".*src?/g, `"${mfProjectName}`)
+  // }
+
   return newFileData
 }
 
