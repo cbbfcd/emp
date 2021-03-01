@@ -20,6 +20,7 @@ img {
 }
 
 h1 {
+  background: url('./logo.png');
   font-family: Arial, Helvetica, sans-serif;
 }
 </style>

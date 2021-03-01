@@ -59,6 +59,9 @@ module.exports = {
         console.log('webpack config', config.toString(), '==========')
       }
     }
+
+    require('../webpack/config/afterCompile/index')(config, env)
+
     // 取消继承 minimizer TerserPlugin 让压缩更具定制化
     // if (env === 'production') wpc.optimization.minimizer.push('...')
     return wpc
