@@ -46,8 +46,9 @@ const appendToIgnore = async text => {
 
     let regex = new RegExp(text.replace('*', '\\*'), 'g')
     content = content.replace(regex, '')
-    regex = new RegExp('\\n\\n', 'g')
-    content = content.replace(/^[\n|\r\n]*|[\n|\r\n]*$/g, '')
+    content = content.replace(/(\n[\s\t]*\r*\n)/g, '\n').replace(/^[\n\r\n\t]*|[\n\r\n\t]*$/g, '')
+    // content = content.replace(/^[\n|\r\n]*|[\n|\r\n]*$/g, '')
+    content = content.replace(/^\s*\n/g, '')
     content && (content += '\n')
     content += text
     writeFile(ignoreFile, content)
