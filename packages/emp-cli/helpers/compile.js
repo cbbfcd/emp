@@ -1,4 +1,4 @@
-const swc = require('@swc/core')
+// const swc = require('@swc/core')
 const Module = require('module')
 const path = require('path')
 //
@@ -31,8 +31,8 @@ function requireFromString(code, filename, opts) {
 
   return exports
 }
-function tsCompile(code) {
-  return swc.transform(code, {
+function tsCompile(code, src) {
+  /* return swc.transform(code, {
     module: {type: 'commonjs'},
     jsc: {
       externalHelpers: true,
@@ -43,7 +43,22 @@ function tsCompile(code) {
         decorators: true,
       },
     },
+  }) */
+  const sourceRoot = path.dirname(src)
+  const tsconfig = path.join(sourceRoot, 'tsconfig.json')
+  const rs = require('esbuild').build({
+    tsconfig,
+    format: 'cjs',
+    bundle: true,
+    platform: 'node',
+    write: false,
+    stdin: {
+      contents: code,
+      loader: 'ts',
+      resolveDir: sourceRoot,
+    },
   })
+  return rs.outputFiles[0].text
 }
 
 module.exports = {
