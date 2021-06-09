@@ -15,7 +15,7 @@ const uploadOss = async (packageName, packageVersion) => {
   try {
     const downloadResult = await download(`${name}-${version}.tgz`, remoteUrl)
     const formData = new FormData()
-    const stream = fs.createReadStream(downloadResult.filePath, {highWaterMark: 1})
+    const stream = fs.createReadStream(downloadResult.filePath, {highWaterMark: 6})
 
     formData.append('custompath', `/unpkg/${name.replace(/\//g, '-')}/${version}/`)
     formData.append('file', stream)
