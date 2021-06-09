@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "lerna run --scope @emp/* --parallel dev",
-    "dev:hot": "lerna run --scope @emp/* --parallel dev:hot",
+    "dev": "lerna run --scope={@emp/demo1,@emp/demo2} --parallel dev",
+    "dev:hot": "lerna run --scope={@emp/demo1,@emp/demo2} --parallel dev:hot",
     "build": "lerna run --scope @emp/* --parallel build",
     "start": "lerna run --scope @emp/* --parallel start",
     "dev:antd": "lerna run --scope @emp-antd/* --parallel dev",
@@ -28,7 +28,9 @@
     "dev:dynamichost": "lerna run --scope '{@emp/demo2,@empdynamichost/host}' --parallel dev",
     "dev:reactvue": "lerna run --scope @empreactvue/* --parallel dev",
     "dev:vue23":"lerna run --scope @empvue23/* --parallel dev",
-    "dev:reactdiff":"lerna run --scope @emp-reactdiff/* --parallel dev"
+    "dev:reactdiff":"lerna run --scope @emp-reactdiff/* --parallel dev",
+    "dev:remote":"lerna run --scope={@emp/demo1,remote-host-change} --parallel dev",
+    "dev:mobx":"lerna run --scope={mobx5,mobx6} --parallel dev"
   },
   "devDependencies": {},
   "dependencies": {}

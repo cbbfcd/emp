@@ -70,20 +70,21 @@
       ```
 
 ## 🧞‍♂️ 指令插件开发指引
-### 插件，包名前缀需要为 `emp-plugin-*`, `index.js` 为 emp 插件入口。
+### 插件，包名前缀需要为 `emp-plugin-*`, `cli.js` 为 emp 插件入口。
 
-[全局命令插件模版工程](https://github.com/efoxTeam/emp/tree/main/projects/emp-plugin-example)
-
-+ 新建项目，以 `emp-plugin-` 为项目前缀,插件入口为 `index.js`
++ 新建项目，以 `emp-plugin-` 为项目前缀,插件入口为 `cli.js`
 ```javascript
-registerCommand({
-  command: 'helloGlobalPlugin',
-  description: 'It is description',
-  options: [{name: '-i, --item <item>', description: 'flavour of pizza'}],
-  action: ({item}) => {
-    console.log(`global ${item}`)
-  },
-})
+module.exports = program => {
+  program
+    .command('helloWorldPlugin')
+    .option('-i, --item <item>')
+    .description([
+      `It is plugin description`,
+    ])
+    .action(({item}) => {
+      console.log(`Plugin ${item}`)
+    })
+}
 ```
 
  + 开发完成后(emp-plugin-example 仅为例子包名，具体包名以实际包名为准):
@@ -143,9 +144,6 @@ import {IWorkSpaceConfig} from '@efox/emp-cli/types/emp-workspace-config'
 const empWorkspaceConfig: IWorkSpaceConfig = {
     // 执行 emp workspace -t pullTypes 指令，会把 pullConfig配置的远程声明文件，拉到当前根目录 types目录下
   pullConfig: {
-    pcbase: 'http://res-pc-bc-dev.rshun.net/emp_base/1.0.0/index.d.ts',
-    chatbox: 'http://res-pc-bc.rshun.net/emp_chatbox/index.d.ts',
-    stream: 'https://pcyy-base-component.yy.com/bdgamelive/streamer_1.0.10/index.d.ts',
     localTypeTest1: 'E:/baidu/git/bdgamelive/src/types/svga.d.ts',
     localTypeTest2: 'E:/baidu/git/bdgamelive/src/types/empbdgamechatbox.d.ts',
   },
